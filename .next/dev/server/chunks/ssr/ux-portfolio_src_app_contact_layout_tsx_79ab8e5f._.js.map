@@ -1,6 +1,0 @@
-{
-  "version": 3,
-  "sources": [],
-  "sections": [
-    {"offset": {"line": 4, "column": 0}, "map": {"version":3,"sources":["file:///Users/pb09/ux-portfolio/src/app/contact/layout.tsx"],"sourcesContent":["import type { Metadata } from \"next\"\n\nexport const metadata: Metadata = {\n  title: \"Contact\",\n}\n\nexport default function ContactLayout({\n  children,\n}: {\n  children: React.ReactNode\n}) {\n  return children\n}\n\n"],"names":[],"mappings":";;;;;;AAEO,MAAM,WAAqB;IAChC,OAAO;AACT;AAEe,SAAS,cAAc,EACpC,QAAQ,EAGT;IACC,OAAO;AACT"}}]
-}
