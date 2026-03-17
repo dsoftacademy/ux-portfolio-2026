@@ -1,0 +1,17 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: light;
+}
+
+body {
+  @apply bg-surface font-sans text-brand-primary antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+::selection {
+  @apply bg-brand-primary text-white;
+}
+
