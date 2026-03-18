@@ -10,15 +10,15 @@ export const dynamic = "force-dynamic"
 export const revalidate = 0
 
 type Project = {
-  _id: string
-  title: string
-  slug: { current: string }
-  category?: string
-  mainImage?: SanityImageSource
-  overviewRole?: string
-  overviewTimeline?: string
-  overviewTools?: string
-  content?: any[]
+  _id: string;
+  title: string;
+  slug: { current: string };
+  category?: string;
+  mainImage?: any;
+  overviewRole?: string;
+  overviewTimeline?: string;
+  overviewTools?: string;
+  content?: import("@portabletext/types").PortableTextBlock[];
 }
 
 async function getProjectBySlug(slug: string): Promise<Project | null> {
@@ -85,7 +85,7 @@ export default async function ProjectDetailPage({
             </Link>
             <H1 className="mt-6">Project not found</H1>
             <p className="mt-3 text-sm text-zinc-600">
-              I couldn’t find a project with slug <span className="font-medium text-zinc-900">{slug}</span>.
+              I couldn&apos;t find a project with slug <span className="font-medium text-zinc-900">{slug}</span>.
             </p>
           </SectionWrapper>
         </section>

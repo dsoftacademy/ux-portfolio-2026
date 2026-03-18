@@ -8,7 +8,11 @@ import { client } from "@/sanity/lib/client"
 interface Project {
   _id: string;
   title: string;
-  mainImage: any; // We'll keep this as any for now since Sanity images are complex
+  mainImage: {
+    asset: {
+      url: string;
+    };
+  };
   slug: { current: string };
   category?: string; // The '?' means this is optional
   excerpt?: string;
@@ -42,11 +46,11 @@ export default async function HomePage() {
               Product UX • Research • Systems
             </p>
             <h1 className="mt-3 text-4xl font-semibold tracking-tight text-zinc-950 md:text-5xl">
-              Hi, I'm Pratishek Bansal, a UX/UI Design Lead crafting digital
+            Hi, I&apos;m Pratishek, a UX/UI Design Lead crafting digital
               experiences.
             </h1>
             <p className="mt-5 max-w-2xl text-base leading-relaxed text-zinc-700">
-              I’m Pratishek, a UX/UI Design Lead focused on mobile products and
+              I&apos;m Pratishek, a UX/UI Design Lead focused on mobile products and
               design systems—partnering with product and engineering to turn
               messy problems into simple, high-performing experiences.
             </p>
@@ -93,7 +97,7 @@ export default async function HomePage() {
                 Featured projects
               </p>
               <h2 className="mt-2 font-heading text-2xl font-bold tracking-tight text-brand-primary md:text-3xl">
-                Work I’m proud of
+                Work I&apos;m proud of
               </h2>
               <p className="mt-3 max-w-2xl text-sm leading-relaxed text-zinc-600">
                 Three recent highlights. Replace these with real case studies as
@@ -140,7 +144,7 @@ export default async function HomePage() {
           <div className="rounded-3xl border border-zinc-200 bg-white p-6 md:p-10">
             <p className="text-sm font-medium text-zinc-600">Contact</p>
             <h2 className="mt-2 font-heading text-2xl font-bold tracking-tight text-brand-primary md:text-3xl">
-              Let’s build something together
+              Let&apos;s build something together
             </h2>
             <p className="mt-3 max-w-2xl text-sm leading-relaxed text-zinc-600">
               Currently available for UX/UI Design Lead roles and strategic
