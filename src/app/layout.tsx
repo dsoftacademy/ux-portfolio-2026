@@ -20,8 +20,13 @@ export const metadata: Metadata = {
     default: "Pratishek Bansal | UX/UI Design Lead",
     template: "%s - Pratishek Bansal",
   },
-  description:
-    "Portfolio of Pratishek Bansal, a UX/UI Design Lead specializing in mobile products, research, and design systems.",
+  description: "Portfolio of Pratishek Bansal, a UX/UI Design Lead specializing in mobile products, research, and design systems.",
+  // ADD THIS SECTION BELOW
+  icons: {
+    icon: '/icon.png',
+    shortcut: '/icon.png',
+    apple: '/icon.png',
+  },
 }
 
 export default function RootLayout({
