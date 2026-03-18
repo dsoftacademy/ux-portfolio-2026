@@ -1,24 +1,21 @@
-export const dynamic = "force-dynamic"
-export const revalidate = 0
-
-
 import { Button } from "@/components/Button"
 import { ProjectCard } from "@/components/ProjectCard"
 import { SectionWrapper } from "@/components/SectionWrapper"
 import { client } from "@/sanity/lib/client"
 
 
-type Project = {
-  _id: string
-  title: string
-  slug: { current: string }
-  category?: string
-  mainImage?: any
-  excerpt?: string
+// Define what data a Project contains
+interface Project {
+  _id: string;
+  title: string;
+  mainImage: any; // We'll keep this as any for now since Sanity images are complex
+  slug: { current: string };
+  category?: string; // The '?' means this is optional
+  excerpt?: string;
 }
 
 async function getProjects(): Promise<Project[]> {
-  return client.fetch(
+  return await client.fetch(
     `*[_type == "project"] | order(_createdAt desc){
       _id,
       title,
@@ -29,7 +26,7 @@ async function getProjects(): Promise<Project[]> {
         asset->
       },
       "excerpt": content[0].children[0].text
-    }`,
+    }`
   )
 }
 
