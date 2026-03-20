@@ -1,9 +1,9 @@
+// src/app/contact/page.tsx
 "use client"
 
 import * as React from "react"
 import { Button } from "@/components/Button"
 import { SectionWrapper } from "@/components/SectionWrapper"
-import { H1 } from "@/components/Typography"
 
 export default function ContactPage() {
   const [success, setSuccess] = React.useState(false)
@@ -14,110 +14,167 @@ export default function ContactPage() {
   }
 
   return (
-    <div className="bg-surface">
-      <section className="py-12">
+    <main className="min-h-screen bg-[var(--bg)] pb-24 pt-32 transition-colors duration-500">
+      {/* 1. HEADER SECTION */}
+      <section className="mb-12">
         <SectionWrapper>
-          <p className="text-sm font-medium text-zinc-600">Let’s work together</p>
-          <H1 className="mt-3">Contact</H1>
-          <p className="mt-4 max-w-2xl text-base leading-relaxed text-zinc-600">
-            Send a quick note and I’ll get back to you. (This form is a
-            placeholder—submission is not wired to an email service yet.)
-          </p>
+          <div className="max-w-3xl">
+            <span className="font-mono text-[11px] font-bold uppercase tracking-[0.2em] text-[var(--accent)]">
+              Let’s work together
+            </span>
+            <h1 className="mt-6 font-sans text-5xl font-extrabold tracking-tighter text-[var(--text)] md:text-7xl">
+              Contact
+            </h1>
+            <p className="mt-6 text-lg leading-relaxed text-[var(--text-muted)]">
+              Looking for a Design Lead to architect your next system or scale your product team? 
+              Send a note below and I’ll get back to you within 24 hours.
+            </p>
+          </div>
         </SectionWrapper>
       </section>
 
-      <section className="pb-16">
+      {/* 2. FORM SECTION */}
+      <section>
         <SectionWrapper>
-          <div className="rounded-3xl border border-zinc-200 bg-white p-6 md:p-10">
+          <div className="overflow-hidden rounded-[32px] border border-[var(--border)] bg-[var(--bg)] transition-all duration-500 shadow-sm">
             {success ? (
-              <div className="rounded-2xl border border-emerald-200 bg-emerald-50 p-5">
-                <p className="text-sm font-semibold text-emerald-900">
-                  Message sent
+              <div className="p-12 md:p-20 text-center">
+                <div className="mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-full bg-emerald-500/10 text-emerald-500">
+                  <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
+                    <polyline points="20 6 9 17 4 12" />
+                  </svg>
+                </div>
+                <h2 className="text-2xl font-bold text-[var(--text)]">Message sent successfully</h2>
+                <p className="mt-4 text-[var(--text-muted)]">
+                  Thanks for reaching out! I&apos;ve received your inquiry and will reply soon.
                 </p>
-                <p className="mt-2 text-sm leading-relaxed text-emerald-800">
-                  Thanks for reaching out — I’ll reply soon.
-                </p>
-                <div className="mt-4 flex flex-wrap gap-3">
-                  <Button
-                    variant="secondary"
-                    onClick={() => setSuccess(false)}
-                  >
+                <div className="mt-10 flex flex-wrap justify-center gap-4">
+                  <Button variant="secondary" onClick={() => setSuccess(false)}>
                     Send another
                   </Button>
-                  <Button href="mailto:pratishek.designs@gmail.com">
-                    Email directly
+                  <Button href="/">
+                    Back Home
                   </Button>
                 </div>
               </div>
             ) : (
-              <form onSubmit={onSubmit} className="grid gap-6">
-                <div className="grid gap-4 md:grid-cols-2">
-                  <label className="grid gap-2">
-                    <span className="text-sm font-medium text-brand-primary">
-                      Name
-                    </span>
-                    <input
-                      name="name"
-                      required
-                      className="h-11 rounded-2xl border border-zinc-200 bg-white px-4 text-sm text-brand-primary placeholder:text-zinc-400 focus:outline-none focus:ring-2 focus:ring-brand-accent focus:ring-offset-2"
-                      placeholder="Your name"
-                    />
-                  </label>
-
-                  <label className="grid gap-2">
-                    <span className="text-sm font-medium text-brand-primary">
-                      Email
-                    </span>
-                    <input
-                      name="email"
-                      type="email"
-                      required
-                      className="h-11 rounded-2xl border border-zinc-200 bg-white px-4 text-sm text-brand-primary placeholder:text-zinc-400 focus:outline-none focus:ring-2 focus:ring-brand-accent focus:ring-offset-2"
-                      placeholder="you@company.com"
-                    />
-                  </label>
+              <div className="grid md:grid-cols-5">
+                {/* Contact Info Sidebar */}
+                <div className="md:col-span-2 bg-[var(--surface)] p-8 md:p-12 border-b md:border-b-0 md:border-r border-[var(--border)]">
+                  <h3 className="text-sm font-bold uppercase tracking-widest text-[var(--text)] mb-8">Direct Channels</h3>
+                  <div className="space-y-8">
+                    <div>
+                      <p className="text-[10px] font-bold uppercase tracking-widest text-[var(--text-muted)] mb-2">Email</p>
+                      <a href="mailto:pratishek.designs@gmail.com" className="text-base font-medium text-[var(--text)] hover:text-[var(--accent)] transition-colors">
+                        pratishek.designs@gmail.com
+                      </a>
+                    </div>
+                    <div>
+                      <p className="text-[10px] font-bold uppercase tracking-widest text-[var(--text-muted)] mb-2">Social</p>
+                      <a href="https://www.linkedin.com/in/pratishekbansal" target="_blank" rel="noopener noreferrer" className="text-base font-medium text-[var(--text)] hover:text-[var(--accent)] transition-colors">
+                        LinkedIn
+                      </a>
+                    </div>
+                    <div>
+                      <p className="text-[10px] font-bold uppercase tracking-widest text-[var(--text-muted)] mb-2">Location</p>
+                      <p className="text-base font-medium text-[var(--text)]">Remote / Relocation friendly</p>
+                    </div>
+                  </div>
                 </div>
 
-                <label className="grid gap-2">
-                  <span className="text-sm font-medium text-brand-primary">
-                    Subject
-                  </span>
-                  <input
-                    name="subject"
-                    required
-                    className="h-11 rounded-2xl border border-zinc-200 bg-white px-4 text-sm text-brand-primary placeholder:text-zinc-400 focus:outline-none focus:ring-2 focus:ring-brand-accent focus:ring-offset-2"
-                    placeholder="What can I help with?"
-                  />
-                </label>
+                {/* Form Field */}
+                <form onSubmit={onSubmit} className="md:col-span-3 p-8 md:p-12 grid gap-8">
+                  <div className="grid gap-8 md:grid-cols-2">
+                    <div className="grid gap-3">
+                      <label htmlFor="name" className="text-[11px] font-bold uppercase tracking-widest text-[var(--text)]">Name</label>
+                      <input
+                        id="name"
+                        name="name"
+                        required
+                        placeholder="Pratishek Bansal"
+                        className="w-full rounded-xl border border-[var(--border)] bg-[var(--bg)] px-4 py-3 text-sm text-[var(--text)] placeholder:text-[var(--text-5)] focus:border-[var(--accent)] focus:outline-none focus:ring-1 focus:ring-[var(--accent)] transition-all"
+                      />
+                    </div>
+                    <div className="grid gap-3">
+                      <label htmlFor="email" className="text-[11px] font-bold uppercase tracking-widest text-[var(--text)]">Email</label>
+                      <input
+                        id="email"
+                        name="email"
+                        type="email"
+                        required
+                        placeholder="you@company.com"
+                        className="w-full rounded-xl border border-[var(--border)] bg-[var(--bg)] px-4 py-3 text-sm text-[var(--text)] placeholder:text-[var(--text-5)] focus:border-[var(--accent)] focus:outline-none focus:ring-1 focus:ring-[var(--accent)] transition-all"
+                      />
+                    </div>
+                  </div>
 
-                <label className="grid gap-2">
-                  <span className="text-sm font-medium text-brand-primary">
-                    Message
-                  </span>
-                  <textarea
-                    name="message"
-                    required
-                    rows={6}
-                    className="resize-y rounded-2xl border border-zinc-200 bg-white px-4 py-3 text-sm text-brand-primary placeholder:text-zinc-400 focus:outline-none focus:ring-2 focus:ring-brand-accent focus:ring-offset-2"
-                    placeholder="Tell me a bit about the project, scope, timeline, and what success looks like."
-                  />
-                </label>
+                  {/* Added Mobile number and country code selection */}
+                  <div className="grid gap-3">
+                    <label htmlFor="phone" className="text-[11px] font-bold uppercase tracking-widest text-[var(--text)]">Phone Number</label>
+                    <div className="flex gap-2">
+                      <div className="relative w-[110px] shrink-0">
+                        <select 
+                          name="countryCode" 
+                          className="w-full h-full rounded-xl border border-[var(--border)] bg-[var(--bg)] px-3 py-3 text-sm text-[var(--text)] focus:border-[var(--accent)] focus:outline-none focus:ring-1 focus:ring-[var(--accent)] transition-all appearance-none cursor-pointer"
+                        >
+                          <option value="+91">🇮🇳 +91</option>
+                          <option value="+1">🇺🇸 +1</option>
+                          <option value="+44">🇬🇧 +44</option>
+                          <option value="+971">🇦🇪 +971</option>
+                          <option value="+65">🇸🇬 +65</option>
+                          <option value="+61">🇦🇺 +61</option>
+                        </select>
+                        <div className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-[var(--text-muted)]">
+                          <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
+                            <path d="m6 9 6 6 6-6"/>
+                          </svg>
+                        </div>
+                      </div>
+                      <input
+                        id="phone"
+                        name="phone"
+                        type="tel"
+                        required
+                        placeholder="98765 43210"
+                        className="flex-1 rounded-xl border border-[var(--border)] bg-[var(--bg)] px-4 py-3 text-sm text-[var(--text)] placeholder:text-[var(--text-5)] focus:border-[var(--accent)] focus:outline-none focus:ring-1 focus:ring-[var(--accent)] transition-all"
+                      />
+                    </div>
+                  </div>
 
-                <div className="flex flex-wrap items-center gap-3">
-                  <Button type="submit">Send Message</Button>
-                  <Button
-                    href="mailto:pratishek.designs@gmail.com"
-                    variant="secondary"
-                  >
-                    Or email me
-                  </Button>
-                </div>
-              </form>
+                  <div className="grid gap-3">
+                    <label htmlFor="subject" className="text-[11px] font-bold uppercase tracking-widest text-[var(--text)]">Subject</label>
+                    <input
+                      id="subject"
+                      name="subject"
+                      required
+                      placeholder="Project Inquiry / Design Leadership"
+                      className="w-full rounded-xl border border-[var(--border)] bg-[var(--bg)] px-4 py-3 text-sm text-[var(--text)] placeholder:text-[var(--text-5)] focus:border-[var(--accent)] focus:outline-none focus:ring-1 focus:ring-[var(--accent)] transition-all"
+                    />
+                  </div>
+
+                  <div className="grid gap-3">
+                    <label htmlFor="message" className="text-[11px] font-bold uppercase tracking-widest text-[var(--text)]">Message</label>
+                    <textarea
+                      id="message"
+                      name="message"
+                      required
+                      rows={5}
+                      placeholder="Tell me about your goals..."
+                      className="w-full resize-none rounded-xl border border-[var(--border)] bg-[var(--bg)] px-4 py-4 text-sm text-[var(--text)] placeholder:text-[var(--text-5)] focus:border-[var(--accent)] focus:outline-none focus:ring-1 focus:ring-[var(--accent)] transition-all"
+                    />
+                  </div>
+
+                  <div className="pt-4">
+                    <Button type="submit" className="w-full md:w-auto min-w-[200px]">
+                      Send Message
+                    </Button>
+                  </div>
+                </form>
+              </div>
             )}
           </div>
         </SectionWrapper>
       </section>
-    </div>
+    </main>
   )
 }
-

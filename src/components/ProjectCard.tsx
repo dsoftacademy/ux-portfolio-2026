@@ -1,4 +1,7 @@
-import { Button } from "@/components/Button"
+// src/components/ProjectCard.tsx
+"use client"
+
+import Link from "next/link"
 import { urlFor } from "@/sanity/lib/image"
 import type { SanityImageSource } from "@sanity/image-url/lib/types/types"
 
@@ -18,39 +21,71 @@ export function ProjectCard({
   image,
 }: ProjectCardProps) {
   return (
-    <article className="overflow-hidden rounded-3xl border border-[var(--border)] bg-[var(--surface)] transition-all duration-500 hover:border-[var(--accent)] hover:shadow-[0_20px_40px_rgba(0,0,0,0.3)] group">
-      {/* Image Container with v5 Surface Gradient Fallback */}
-      <div className="aspect-video w-full overflow-hidden bg-gradient-to-br from-[var(--border)] to-[var(--surface)]">
+    <article className="group relative flex flex-col overflow-hidden rounded-[32px] border border-[var(--border)] bg-[var(--bg)] transition-all duration-500 hover:border-[var(--accent)] hover:shadow-[0_32px_64px_-16px_rgba(0,0,0,0.2)] dark:hover:shadow-[0_32px_64px_-16px_rgba(0,0,0,0.6)]">
+      {/* 1. Image/Thumbnail Section */}
+      <div className="relative aspect-[16/10] w-full overflow-hidden bg-[var(--surface)]">
         {image ? (
           // eslint-disable-next-line @next/next/no-img-element
           <img
-            src={urlFor(image).width(800).height(450).fit("crop").url()}
+            src={urlFor(image).width(1200).height(750).fit("crop").auto("format").url()}
             alt={title}
-            className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+            className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+            loading="lazy"
           />
-        ) : null}
+        ) : (
+          <div className="flex h-full w-full items-center justify-center bg-gradient-to-br from-[var(--border)] to-transparent opacity-20">
+            <span className="font-mono text-[10px] uppercase tracking-widest text-[var(--text-muted)]">No Image</span>
+          </div>
+        )}
+        
+        {/* Subtle Overlay on Hover */}
+        <div className="absolute inset-0 bg-black/0 transition-colors duration-500 group-hover:bg-black/5 dark:group-hover:bg-black/20" />
       </div>
 
-      <div className="p-8">
-        <div className="flex items-start justify-between gap-4">
-          <h3 className="font-sans text-xl font-bold tracking-tight text-[var(--text)]">
-            {title}
-          </h3>
-          <span className="shrink-0 rounded-full border border-[var(--border)] bg-[var(--bg)] px-3 py-1 text-[10px] font-bold uppercase tracking-widest text-[var(--text-muted)]">
+      {/* 2. Content Section */}
+      <div className="flex flex-1 flex-col p-7 md:p-9">
+        <div className="mb-6 flex items-center justify-between">
+          <span className="inline-flex items-center rounded-full border border-[var(--border)] bg-[var(--pillBg)] px-3 py-1 text-[10px] font-bold uppercase tracking-[0.15em] text-[var(--accent)]">
             {category}
           </span>
         </div>
 
-        <p className="mt-4 text-sm leading-relaxed text-[var(--text-2)] line-clamp-2">
-          {description}
-        </p>
+        <h3 className="font-sans text-2xl font-extrabold leading-tight tracking-tight text-[var(--text)] transition-colors group-hover:text-[var(--accent)]">
+          {title}
+        </h3>
 
-        <div className="mt-8">
-          <Button href={href ?? "/projects"} variant="secondary" className="w-full sm:w-auto">
-            View case study
-          </Button>
+        {/* Updated Body Copy: Extended to 3 lines and adjusted spacing */}
+        <div className="mt-4 flex-1 min-h-[4.5rem]">
+          <p className="text-[15px] leading-relaxed text-[var(--text-muted)] line-clamp-3">
+            {description}
+          </p>
+        </div>
+
+        <div className="mt-8 flex items-center justify-between">
+          <Link href={href} className="flex items-center gap-2 group/link">
+            <span className="text-[13px] font-bold tracking-wide text-[var(--text)]">View Project</span>
+            <svg 
+              className="h-4 w-4 transition-transform duration-300 group-hover/link:translate-x-1" 
+              viewBox="0 0 24 24" 
+              fill="none" 
+              stroke="currentColor" 
+              strokeWidth="2.5" 
+              strokeLinecap="round" 
+              strokeLinejoin="round"
+            >
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+              <polyline points="12 5 19 12 12 19"></polyline>
+            </svg>
+          </Link>
+          
+          <div className="h-2 w-2 rounded-full bg-[var(--border)] transition-colors duration-500 group-hover:bg-[var(--accent)]" />
         </div>
       </div>
+      
+      {/* Absolute Overlay Link for entire card accessibility */}
+      <Link href={href} className="absolute inset-0 z-10" aria-label={`View ${title}`}>
+        <span className="sr-only">View {title}</span>
+      </Link>
     </article>
   )
 }

@@ -1,5 +1,6 @@
-import { Section } from "@/components/Section"
+// src/app/about/page.tsx
 import { Button } from "@/components/Button"
+import { SectionWrapper } from "@/components/SectionWrapper"
 
 export const metadata = {
   title: "About | Pratishek Bansal",
@@ -23,42 +24,79 @@ export default function AboutPage() {
   ];
 
   return (
-    <main className="pt-16 bg-[var(--bg)] text-[var(--text)] transition-colors duration-500">
-      <Section
-        // Eyebrow using accent color for brand distinction
-        eyebrow={<span className="text-[var(--accent)]">Experience & Strategy</span>}
-        // Title using var(--text) to ensure it stays white/light in Dark Mode
-        title={<span className="text-[var(--text)]">Driving Product Strategy Through Design Leadership</span>}
-      >
-        <div className="space-y-6 text-[var(--text-muted)] leading-relaxed font-sans">
-          <p>
-            I am a <span className="text-[var(--text)] font-semibold">Senior UX Design Lead</span> with over a decade of experience crafting human-centered products. My work sits at the intersection of <strong>Design Systems Architecture</strong> and <strong>AI-first product strategy</strong>.
-          </p>
-          
-          <p>
-            Currently, as a <strong>Design Lead at ICICI Lombard</strong>, I direct the UX strategy for enterprise platforms. I recently led the creation of the <strong>IL Design System</strong>, unifying 15+ product teams and reducing handoff time by <strong>70%</strong>—earning the <span className="text-[var(--accent)] italic font-medium">Top Performer 2025</span> award.
-          </p>
+    <main className="min-h-screen bg-[var(--bg)] pb-24 pt-32 transition-colors duration-500">
+      {/* 1. HEADER & BIO SECTION */}
+      <section className="mb-12">
+        <SectionWrapper>
+          <div className="grid gap-12 lg:grid-cols-5">
+            <div className="lg:col-span-3">
+              <span className="font-mono text-[11px] font-bold uppercase tracking-[0.2em] text-[var(--accent)]">
+                Experience & Strategy
+              </span>
+              <h1 className="mt-6 font-sans text-5xl font-extrabold tracking-tighter text-[var(--text)] md:text-7xl">
+                Driving Product Strategy Through Design Leadership
+              </h1>
+              <div className="mt-8 space-y-6 text-lg leading-relaxed text-[var(--text-muted)] font-sans">
+                <p>
+                  I am a <span className="text-[var(--text)] font-semibold">Senior UX Design Lead</span> with over a decade of experience crafting human-centered products. My work sits at the intersection of <strong>Design Systems Architecture</strong> and <strong>AI-first product strategy</strong>.
+                </p>
+                
+                <p>
+                  Currently, as a <strong>Design Lead at ICICI Lombard</strong>, I direct the UX strategy for enterprise platforms. I recently led the creation of the <strong>IL Design System</strong>, unifying 15+ product teams and reducing handoff time by <strong>70%</strong>—earning the <span className="text-[var(--accent)] italic font-medium">Top Performer 2025</span> award.
+                </p>
 
-          <p>
-            Previously at <strong>Jio</strong>, I drove design system maturity across India&apos;s largest digital ecosystem, contributing to a 17.8% increase in customer acquisition.
-          </p>
+                <p>
+                  Previously at <strong>Jio</strong>, I drove design system maturity across India&apos;s largest digital ecosystem, contributing to a 17.8% increase in customer acquisition.
+                </p>
 
-          <p>
-            I also pioneer AI-first features, including <strong>Autonomous AI Agents</strong> that reduced query resolution times by 40%. My background as a <strong>Co-Founder</strong> gives me a unique entrepreneurial lens on product growth.
-          </p>
-        </div>
-      </Section>
+                <p>
+                  I also pioneer AI-first features, including <strong>Autonomous AI Agents</strong> that reduced query resolution times by 40%. My background as a <strong>Co-Founder</strong> gives me a unique entrepreneurial lens on product growth.
+                </p>
+              </div>
+            </div>
+            
+            {/* Sidebar / Profile Placeholder Area */}
+            <div className="lg:col-span-2">
+              <div className="sticky top-32 rounded-[32px] border border-[var(--border)] bg-[var(--surface)] p-8 shadow-sm">
+                <div className="aspect-square w-full rounded-2xl bg-[var(--bg)] border border-[var(--border)] mb-8 flex items-center justify-center overflow-hidden">
+                   <span className="text-[var(--text-muted)] font-mono text-xs uppercase tracking-widest">Profile Image</span>
+                </div>
+                <div className="space-y-6">
+                  <div>
+                    <p className="text-[10px] font-bold uppercase tracking-widest text-[var(--text-muted)] mb-2">Location</p>
+                    <p className="text-base font-medium text-[var(--text)]">Mumbai, India / Remote</p>
+                  </div>
+                  <div>
+                    <p className="text-[10px] font-bold uppercase tracking-widest text-[var(--text-muted)] mb-2">Current Role</p>
+                    <p className="text-base font-medium text-[var(--text)]">Design Lead @ ICICI Lombard</p>
+                  </div>
+                  <div className="pt-4">
+                    <Button href="/contact" className="w-full">
+                      Download Resume
+                    </Button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </SectionWrapper>
+      </section>
 
-      {/* Competency Cards */}
-      <section className="pb-16">
-        <div className="mx-auto max-w-5xl px-5">
-          <div className="grid gap-4 md:grid-cols-3">
+      {/* 2. COMPETENCY CARDS */}
+      <section className="py-12">
+        <SectionWrapper>
+          <div className="grid gap-6 md:grid-cols-3">
             {competencies.map((v) => (
               <div
                 key={v.title}
-                className="rounded-3xl border border-[var(--border)] p-8 transition-all bg-[var(--bg)] shadow-sm hover:border-[var(--accent)]/30"
+                className="rounded-[32px] border border-[var(--border)] p-8 transition-all bg-[var(--surface)] shadow-sm hover:border-[var(--accent)]/30 group"
               >
-                <p className="text-[11px] font-bold tracking-[0.2em] text-[var(--accent)] uppercase font-mono">
+                <div className="mb-6 flex h-10 w-10 items-center justify-center rounded-xl bg-[var(--bg)] border border-[var(--border)] text-[var(--accent)] group-hover:scale-110 transition-transform">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10" />
+                  </svg>
+                </div>
+                <p className="text-[11px] font-bold tracking-[0.2em] text-[var(--text)] uppercase font-mono">
                   {v.title}
                 </p>
                 <p className="mt-3 text-sm leading-relaxed text-[var(--text-muted)]">
@@ -67,24 +105,28 @@ export default function AboutPage() {
               </div>
             ))}
           </div>
-        </div>
+        </SectionWrapper>
       </section>
 
-      {/* Call to Action Section */}
-      <section className="pb-24">
-        <div className="mx-auto max-w-5xl px-5">
-          <div className="relative overflow-hidden rounded-[2.5rem] border border-[var(--border)] bg-[var(--bg)] p-10 md:p-16 text-center shadow-xl">
-            <h3 className="relative z-10 text-3xl font-bold tracking-tight mb-8 md:text-4xl text-[var(--text)]">
-              Let&apos;s build something scalable.
+      {/* 3. CALL TO ACTION SECTION */}
+      <section className="py-12">
+        <SectionWrapper>
+          <div className="relative overflow-hidden rounded-[40px] border border-[var(--border)] bg-[var(--surface)] p-12 md:p-24 text-center shadow-sm">
+            <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-[var(--accent)] to-transparent opacity-30" />
+            <h3 className="relative z-10 text-4xl font-extrabold tracking-tighter mb-8 md:text-6xl text-[var(--text)]">
+              Let&apos;s build something <br className="hidden md:block" /> scalable together.
             </h3>
             
-            <div className="relative z-10 flex justify-center gap-4">
-              <Button href="mailto:pratishek.designs@gmail.com" variant="primary">
-                Get in touch
+            <div className="relative z-10 flex flex-wrap justify-center gap-4">
+              <Button href="/contact" variant="primary" className="min-w-[180px]">
+                Start a Conversation
+              </Button>
+              <Button href="/projects" variant="secondary" className="min-w-[180px]">
+                View Projects
               </Button>
             </div>
           </div>
-        </div>
+        </SectionWrapper>
       </section>
     </main>
   )

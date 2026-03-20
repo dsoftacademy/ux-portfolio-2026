@@ -1,3 +1,4 @@
+// src/components/Nav.tsx
 "use client"
 
 import * as React from "react"
@@ -11,6 +12,7 @@ const links = [
   { href: "/", label: "Home" },
   { href: "/projects", label: "Projects" },
   { href: "/about", label: "About" },
+  { href: "/contact", label: "Contact" },
 ] as const
 
 export function Nav() {
